@@ -1,0 +1,75 @@
+ <div class="columns is-multiline">
+ {{#each placemarks}}
+
+    <div class="column is-half  ">
+            <div class="card">
+        <div class="card-content">
+
+        <header class="card-header">
+          <p class="card-header-title is-centered has-background-warning ">{{title}}</p>
+       
+        </header>
+         <div class="content id="details-{{_id}}"">
+
+            <p><strong>Location:</strong> {{location}}&nbsp;<strong>Latitude:</strong> {{latitude}}&nbsp;<strong>Longitude:</strong> {{longitude}}</p>
+            <p><strong>Description:</strong> {{description}}</p>
+            <p><strong>Rating:{{rating}} </strong>
+            <p><strong>Review:{{review}} </strong>
+
+            <p><strong>Category:</strong> {{category}}</p>
+</div>
+
+           
+          {{#if img}}
+          <div class="card-image collapse" id="photo-{{_id}}">
+            <figure class="image">
+              <img src={{img}} alt="Placemark Image">
+            </figure>
+          </div>
+          {{/if}}
+        </div>
+          
+            <a href="/dashboard/updateplacemark/{{_id}}" title="Update Placemark" class="update-placemark-icon">
+            <span class="icon has-background-link-light is-large">
+              <i class="fas fa-pen"></i>
+            </span>
+          </a>
+          <a href="/dashboard/uploadimage/{{_id}}" title="Upload/Update Image" >
+            <span class="icon has-background-link-light is-large">
+              <i class="fas fa-camera"></i>
+            </span>
+          </a>
+          <a href="/dashboard/deleteplacemark/{{_id}}" title="Delete Placemark">
+            <span class="icon has-background-danger-light is-large	">
+              <i class="fas is-danger fa-trash"></i>
+            </span>
+          </a>
+
+        <a href="/dashboard/favorites/{{_id}}" onclick="addFavorite(event, '{{_id}}')" title="Favorite" class="favorite-icon">
+            <span class="icon has-background-info-light is-large">
+            <i class="fas fa-star"></i>
+            </span>
+          </a>
+         
+          <a id="shareMessage" href="/dashboard/share" title="Share" >
+          <a href="/dashboard/share/{{_id}}" title="Share" class="share-icon">
+            <span class="icon has-background-success-light is-large">
+              <i class="fas fa-share"></i>
+            </span>
+          </a>
+        </footer>
+      </div>
+    </div>
+  {{/each}}
+</div>
+</div>
+
+
+<!-- script to hide the element which has its id passed when the event occurs (mouse click on down arrow in above dropdown card details) -->
+<script>
+  function toggleCollapse(event, id) {
+    event.preventDefault();
+    const content = document.getElementById(id);
+    content.classList.toggle('is-hidden');
+  }
+</script>

@@ -1,0 +1,35 @@
+{{> placemark-brand}}
+<div id="navMenu" class="pt-5 navbar-menu">
+  <div class="navbar-menu is-hoverable">
+    <div class="navbar-end">
+      <a id="dashboard" class="button is-link is-outlined mx-5" href="/dashboard">Dashboard </a>
+      <div class="navbar-item pl-2 pr-2 has-dropdown is-hoverable">
+        <button class="button is-link is-outlined">Categories</button>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="/categories?category=Landmark">Landmark</a>
+          <a class="navbar-item" href="/categories?category=Beach">Beach</a>
+          <a class="navbar-item" href="/categories?category=River">River</a>
+          <a class="navbar-item" href="/categories?category=Lake">Lake</a>
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+      <a id="about" class="button is-link is-outlined mx-5" href="/about">About</a>
+            <a id="profile" class="button is-link is-outlined mx-5" href="/profile">Profile</a>
+<a id="logout" class="button is-link mx-2 is-outlined" href="/logout" onclick="return confirm('Are you sure you want to log out?');">Logout</a>
+                            </div>
+  </div>
+      <a href="https://github.com/sharonmctsai/placemark"><i class="fa-brands fa-2x has-text-lnk fa-github mx-5"></i></a>
+
+            <a href="/documentation"><i class="fa fa-file-text fa-2x" ></i>
+</a>
+
+
+<script>
+  document.getElementById("{{active}}").classList.add("is-focused");
+</script>
+<br>

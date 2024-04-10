@@ -1,0 +1,39 @@
+{{> welcome-menu active="signup"}}
+<section class="content box">
+  <div class="columns">
+    <div class="column is-half">
+      <form action="/register" method="POST">
+        <h3 class="subtitle">Register</h3>
+        <div class="field is-horizontal field-body">
+          <div class="field">
+            <label class="label">First Name</label>
+              <input class="input" type="text" placeholder="First Name" name="firstName" required>
+          
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Last Name</label>
+          
+              <input class="input" type="text" placeholder="Last Name" name="lastName" required>
+         
+            </p>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+            <input class="input" placeholder="Email" name="email" required>
+           
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+            <input class="input" type="password" placeholder="********" name="password" required>
+           
+          </p>
+        </div>
+        <button class="button has-text-white is-link is-success">Submit</i>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

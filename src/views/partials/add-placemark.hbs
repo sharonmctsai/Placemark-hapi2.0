@@ -1,0 +1,90 @@
+<div class="column is-halffull">
+    <header class="has-background-dark has-text-link-light">
+        <p class="card-header-title has-text-white">Placemark Details</p>
+    </header>
+    <form action="/dashboard/addplacemark" method="POST">
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Enter Title" name="title">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Location</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Enter Location" name="location">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Enter Description " name="description">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Latitude</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Enter Latitude" name="latitude">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Longitude</label>
+                    <input class="input" type="text" placeholder="Enter Longitude" name="longitude">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Rating</label>
+                    <div class="control">
+                        <div class="select is-halfwidth">
+                            <select name="rating">
+                                <option value="5">5 star</option>
+                                <option value="4">4 star</option>
+                                <option value="3">3 star</option>
+                                <option value="2">2 star</option>
+                                <option value="1">1 star</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label">Review</label>
+                    <div class="control">
+                        <div class="select is-halfwidth">
+                            <select name="review">
+                                <option value="Good">Good</option>
+                                <option value="Okay">Okay</option>
+                                <option value="Bad">Bad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Category</label>
+            <div class="select is-fullwidth">
+                <select name="category">
+                    <option value="Landmark">Landmark</option>
+                    <option value="Beach">Beach</option>
+                    <option value="River">River</option>
+                    <option value="Lake">Lake</option>
+                </select>
+            </div>
+        </div>
+        <!-- Placemark button -->
+        <div class="field">
+            <div class="control has-text-right">
+                <button class="button is-success has-text-white">Add Placemark</button>
+            </div>
+        </div>
+    </form>
+</div>

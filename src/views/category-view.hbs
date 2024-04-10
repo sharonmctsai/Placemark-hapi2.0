@@ -1,0 +1,11 @@
+{{> menu active="categories"}}
+<section class="section">
+  {{#if placemarks.length}}
+  {{> list-placemarks}}
+{{else}}
+<div class="box">
+  <p>Sorry , no result in your search</p>
+</div>
+{{/if}}
+  {{> add-placemark}}
+</section>

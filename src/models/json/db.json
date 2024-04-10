@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "_id": "5d32f8df-4e54-4311-8bb2-66b046e3884a"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "_id": "38c2fba4-6bb8-4b08-b1df-1470e9cd93a1"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "_id": "9193a4c2-9ea5-4f6e-8c29-13036f2008be"
+    }
+  ],
+  "placemarks": [
+    {
+      "title": "The Spire",
+      "description": "Shining niddle in the city",
+      "location": "Dublin, Ireland",
+      "latitude": "53.3498",
+      "longitude": "-6.2603",
+      "category": "Landmark"
+    
+    }
+  ]
+}

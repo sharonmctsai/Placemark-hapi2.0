@@ -1,0 +1,23 @@
+<!--leaflet Map-->
+{{#if placemarks}}
+  <div class="content box is-3 is-offset-1">
+    <div id="map" style="width: 80%; height: 500px;"></div>
+  </div>
+{{/if}}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script>
+  const map = L.map('map').setView([53.3498, -6.2603],2);
+  L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  let marker, circle, zoomed;
+  {{#each placemarks}}
+  marker = L.marker([{{latitude}}, {{longitude}}], { title: "{{title}}" });
+  marker.bindPopup("<h1><b>{{title}}</b></h1>" +
+    "{{location}}");
+  marker.addTo(map);
+  {{/each}}
+</script>

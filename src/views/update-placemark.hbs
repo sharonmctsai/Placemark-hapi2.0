@@ -1,0 +1,115 @@
+{{> menu active="dashboard"}}
+
+<div class="columns mt-5 is-centered">
+  <div class="column">
+    <div class="card">
+    <header class="has-background-dark has-text-link-light">
+        <p class="card-header-title has-text-white">Edit the details of this Placemark</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <form action="/dashboard/updateplacemark/{{placemark._id}}" method="POST">
+            <div class="columns">
+              <div class="column">
+                <div class="field">
+                  <label class="label">Title</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="{{placemark.title}}" name="title">
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                  <label class="label">Location</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="{{placemark.location}}" name="location">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <div class="field">
+                  <label class="label">Description</label>
+                  <div class="control">
+                    <input class="input" placeholder="{{placemark.description}}" name="description" >
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Latitude</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="{{placemark.latitude}}" name="latitude">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Longitude</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="{{placemark.longitude}}" name="longitude">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                 
+                    <div class="field">
+                      <label class="label">Rating</label>
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                          <select name="rating">
+                             <option value="5">5 star</option>
+                                <option value="4">4 star</option>
+                                <option value="3">3 star</option>
+                                <option value="2">2 star</option>
+                                <option value="1">1 star</option>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="field">
+                      <label class="label">Review</label>
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                      <select name="review">
+                                <option value="Good">Good</option>
+                                <option value="Okay">Okay</option>
+                                <option value="Bad">Bad</option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="column">
+                  <div class="column">
+
+                    <div class="field">
+                      <label class="label">Category</label>
+                      <div class="control">
+                        <div class="select is-fullwidth">
+                          <select name="category">
+                            <option value="Landmark">Landmark</option>
+                            <option value="River">River</option>
+                            <option value="Lake">Lake </option>
+                             <option value="Beach">Beach </option>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="field">
+                      <label class="label"><br></label>
+                      <div class="control">
+                        <button class="button is-success has-text-white">Update Placemark</i>
+                      </div>
+                    </div>
+                  </div>

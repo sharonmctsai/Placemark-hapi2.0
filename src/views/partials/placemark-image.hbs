@@ -1,0 +1,51 @@
+{{> menu active="dashboard"}}
+
+<div class="card">
+  <div class="card-content">
+    <figure class="image is-256x256">
+      <img src={{placemark.img}}>
+    </figure>
+  </div>
+  <div class="card-content">
+    <form action="/dashboard/uploadimage/{{placemark._id}}" method="POST" enctype="multipart/form-data">
+      <div id="file-select" class="file has-name is-fullwidth">
+        <label class="file-label">
+          <input class="file-input" name="imagefile" type="file" name="resume" accept="image/png, image/jpeg">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose an image to upload...
+            </span>
+          </span>
+          <span class="file-name"></span>
+        </label>
+        <button type="submit" class="button is-success has-text-white pl-5">Upload</button>
+      </div>
+    </form>
+    {{#if placemark.img}}
+    <div class="delete-button-container is-aligned-right pt-2">
+      <a href="/dashboard/deleteimage/{{placemark._id}}" class="button is-danger is-outlined pr-5 pl-5">delete</a>
+    </div>
+    {{/if}}
+  </div>
+</div>
+
+
+<script>
+  
+  const fileInput = document.querySelector(".file-input");
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector(".file-name");
+      fileName.textContent = fileInput.files[0].name;
+    }
+  };
+</script>
+
+<style>
+  .delete-button-container {
+    text-align: right;
+  }
+</style>

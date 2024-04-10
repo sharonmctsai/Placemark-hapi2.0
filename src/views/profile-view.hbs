@@ -1,0 +1,38 @@
+{{> menu active="profile"}}
+<section class="content box">
+  <div class="columns">
+    <div class="column is-half">
+      <form action="/updateuser/{{user._id}}" method="POST">
+        <h3 class="subtitle">Edit Personal Details</h3>
+        <div class="field is-horizontal field-body">
+          <div class="field">
+            <label class="label">First Name</label>
+              <input class="input" type="text" placeholder="{{user.firstName}}" name="firstName">
+             
+            </p>
+          </div>
+          <div class="field">
+            <label class="label">Last Name</label>
+              <input class="input" type="text" placeholder="{{user.lastName}}" name="lastName">
+        
+            </p>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+            <input class="input" type="password" placeholder= "****" name="password">
+        
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+            <input class="input" type="email" placeholder= "{{user.email}}" name="email">
+         
+          </p>
+        </div>
+        <br>
+        <button class="button is-success has-text-white">Update profile</button>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{{> welcome-menu active="login"}}
+<section class="content box">
+  <div class="columns">
+    <div class="column is-half">
+      <form action="/authenticate" method="POST">
+        <h3 class="subtitle">Log-in</h3>
+        <div class="field">
+          <label class="label">Email</label>
+            <input class="input" placeholder="*****@*****" name="email" field>
+       
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+            <input class="input" type="password" placeholder="*********" name="password" required>
+          
+          </p>
+        </div>
+        <button class="button is-success has-text-white">Login</i>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
