@@ -2,7 +2,7 @@
 
 <p>Placemark is a web application for user C,R,U,D and categorize their points of interest.</p>
 
-Project to be deployed
+Project deployed on [Render](https://placemark-hapi2-0.onrender.com).
 
 
 
@@ -128,8 +128,8 @@ https://www.openstreetmap.org/
 
 
 
-## <h3>User guide</h3>
-<h2>Try it </h2>
+##<h> User guide</h>
+<h3>Try it </h3>
 <p>email: "homer@simpson.com" </p>
 <p>password: "secret"</p>
 
@@ -144,7 +144,7 @@ https://www.openstreetmap.org/
 <img src="/assets/list.png">
 
 
-## <h3>Technologies Used</h3>
+<h>Technologies Used</h>
 
 <li>JavaScript/Hapi/Node/Handlebars/Nodemon</li>
 <li>LowDB/Mongoose/Cloudinary</li>
