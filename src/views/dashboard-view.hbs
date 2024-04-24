@@ -5,3 +5,20 @@
   {{> list-placemarks}}
 
 </section>
+<!-- Inside your dashboard-view.hbs or appropriate HTML file -->
+<script>
+  document.querySelectorAll('.share-icon').forEach(icon => {
+    icon.addEventListener('click', async function(event) {
+      event.preventDefault();
+      const placemarkId = this.dataset.placemarkId;
+      try {
+        const response = await fetch(`/dashboard/share/${placemarkId}`);
+        const { url } = await response.json();
+        window.open(url, '_blank', 'noopener noreferrer');
+      } catch (error) {
+        console.error('Failed to retrieve shareable link:', error);
+        // Handle error appropriately
+      }
+    });
+  });
+</script>

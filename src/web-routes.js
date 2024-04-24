@@ -34,7 +34,9 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard/updateplacemark/{id}", config: dashboardController.showUpdatePlacemarkForm },
   { method: "POST", path: "/dashboard/updateplacemark/{id}", config: dashboardController.updatePlacemark },
 
-
+  { method: "GET", path: "/dashboard/addtofavorites/{id}", config: dashboardController.addToFavorites },
+{ method: "GET", path: "/dashboard/favorites", config: dashboardController.showFavorites },
+{ method: "GET", path: "/dashboard/share/{id}", config: dashboardController.sharePlacemark },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];

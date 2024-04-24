@@ -186,16 +186,53 @@ export const dashboardController = {
       try {
         const placemarkId = request.params.id;
         // Make a request to the server to get the shareable link
-        const response = await axios.get(`http://localhost:3000/api/share/placemark/${placemarkId}`);
+        const response = await axios.get(`http://0.0.0:3000/api/share/placemark/${placemarkId}`);
         const { url } = response.data;
-
-        // Log the shareable link
-        console.log(`Shareable link for placemark: ${url}`);
-        // You can also return a response if needed
+  
+        // Open a new window with the shareable link
+        window.open(url, '_blank', 'noopener noreferrer');
+  
+        // Respond with a success message or whatever is appropriate
         return h.response().code(200);
       } catch (error) {
         console.error('Failed to retrieve shareable link:', error);
         return h.response('Failed to retrieve shareable link').code(500);
+      }
+    }
+  },
+ 
+
+
+  addToFavorites: {
+    handler: async function (request, h) {
+      try {
+        const placemarkId = request.params.id;
+        const loggedInUser = request.auth.credentials;
+        
+        // Add placemark to user's favorites
+        await db.userStore.addToFavorites(loggedInUser._id, placemarkId);
+  
+        // Redirect to dashboard or favorites page
+        return h.redirect("/dashboard");
+      } catch (error) {
+        console.error('Failed to add placemark to favorites:', error);
+        return h.response('Failed to add placemark to favorites').code(500);
+      }
+    }
+  },
+  showFavorites: {
+    handler: async function (request, h) {
+      try {
+        const loggedInUser = request.auth.credentials;
+        
+        // Fetch user's favorite placemarks from the database
+        const favoritePlacemarks = await db.userStore.getFavoritePlacemarks(loggedInUser._id);
+  
+        // Render the favorite view page with the list of favorite placemarks
+        return h.view("favorite-view", { favoritePlacemarks });
+      } catch (error) {
+        console.error('Failed to retrieve favorite placemarks:', error);
+        return h.view("error-view", { error: "An error occurred while retrieving favorite placemarks" }).code(500);
       }
     }
   }

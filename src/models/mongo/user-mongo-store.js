@@ -66,4 +66,5 @@ export const userMongoStore = {
     const updatedUserObject = await currentUser.save();
     return updatedUserObject;
   },
+
 };
