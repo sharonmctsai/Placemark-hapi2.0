@@ -15,6 +15,9 @@ export const webRoutes = [
   { method: "POST", path: "/authenticate", config: accountsController.login },
   { method: "POST", path: "/updateuser/{id}", config: accountsController.updateUser },
 
+  { method: "GET", path: "/dashboard/addFavorite/{id}", config: dashboardController.addFavorite },
+  { method: "GET", path: "/favorites", config: dashboardController.showFavorites },
+
   //admin
   { method: "GET", path: "/admin", config: adminDashboardController.index },
   { method: "GET", path: "/admin/deleteuser/{id}", config: adminDashboardController.deleteUser },
@@ -34,9 +37,7 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard/updateplacemark/{id}", config: dashboardController.showUpdatePlacemarkForm },
   { method: "POST", path: "/dashboard/updateplacemark/{id}", config: dashboardController.updatePlacemark },
 
-  { method: "GET", path: "/dashboard/addtofavorites/{id}", config: dashboardController.addToFavorites },
-{ method: "GET", path: "/dashboard/favorites", config: dashboardController.showFavorites },
-{ method: "GET", path: "/dashboard/share/{id}", config: dashboardController.sharePlacemark },
+
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];

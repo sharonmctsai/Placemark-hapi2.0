@@ -1,9 +1,14 @@
-<!-- favorite-view.hbs -->
+<!-- favorites-view.hbs -->
+<p class="title">
+  <i class="fa-solid fa-heart" style="color: pink;"></i>
+  Favorite Placemarks list
+    <i class="fa-solid fa-heart" style="color: pink;"></i>
 
-<h1>Favorite Placemarks</h1>
+</p>
 
-<ul>
-  {{#each favoritePlacemarks}}
-    <li>{{title}} - {{description}}</li>
+  {{#each placemarks}}
+   
+      {{this.title}}
+
+   
   {{/each}}
-</ul>

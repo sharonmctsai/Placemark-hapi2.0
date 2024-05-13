@@ -45,17 +45,8 @@
             </span>
           </a>
 
-        <a href="/dashboard/favorites/{{_id}}" onclick="addFavorite(event, '{{_id}}')" title="Favorite" class="favorite-icon">
-            <span class="icon has-background-info-light is-large">
-            <i class="fas fa-star"></i>
-            </span>
-          </a>
-         
-           <a href="#" onclick="sharePlacemark('{{_id}}')" title="Share" class="share-icon">
-            <span class="icon has-background-success-light is-large">
-              <i class="fas fa-share"></i>
-            </span>
-          </a>
+
+           
         </footer>
       </div>
     </div>
@@ -71,4 +62,5 @@
     const content = document.getElementById(id);
     content.classList.toggle('is-hidden');
   }
+  
 </script>

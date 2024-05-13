@@ -78,6 +78,27 @@ export const placemarkJsonStore = {
     await db.write();
     return retrievedPlacemark;
   },
-
+  async addFavoritePlacemark(userId, placemarkId) {
+    const user = await this.getUserById(userId);
+    if (user) {
+      if (!user.favoritePlacemarks) {
+        user.favoritePlacemarks = [];
+      }
+      user.favoritePlacemarks.push(placemarkId);
+      await this.updateUser(userId, user);
+    }
+  },
+  
+  async getFavoritePlacemarks(userId) {
+    const user = await this.getUserById(userId);
+    if (user && user.favoritePlacemarks) {
+      const favoritePlacemarks = await Promise.all(user.favoritePlacemarks.map(async (placemarkId) => {
+        return await this.getPlacemarkById(placemarkId);
+      }));
+      return favoritePlacemarks.filter((placemark) => placemark !== null);
+    }
+    return [];
+  },
+  
  
 };

@@ -180,61 +180,38 @@ export const dashboardController = {
     },
   },
  
+  
 
-  sharePlacemark: {
-    handler: async function (request, h) {
+  addFavorite: {
+    handler: async function(request, h) {
       try {
         const placemarkId = request.params.id;
-        // Make a request to the server to get the shareable link
-        const response = await axios.get(`http://0.0.0:3000/api/share/placemark/${placemarkId}`);
-        const { url } = response.data;
-  
-        // Open a new window with the shareable link
-        window.open(url, '_blank', 'noopener noreferrer');
-  
-        // Respond with a success message or whatever is appropriate
-        return h.response().code(200);
+        // Logic to add the placemark with ID placemarkId to favorites
+        // This might involve updating the user's favorites list in the database
+        // Once added, you can redirect the user to the favorites page or return a success response
+        return h.redirect("/favorites"); // Redirect to the favorites page
       } catch (error) {
-        console.error('Failed to retrieve shareable link:', error);
-        return h.response('Failed to retrieve shareable link').code(500);
+        console.error("Error adding placemark to favorites:", error);
+        // Handle the error appropriately
+        return h.response("Failed to add placemark to favorites").code(500);
       }
     }
   },
- 
 
-
-  addToFavorites: {
-    handler: async function (request, h) {
-      try {
-        const placemarkId = request.params.id;
-        const loggedInUser = request.auth.credentials;
-        
-        // Add placemark to user's favorites
-        await db.userStore.addToFavorites(loggedInUser._id, placemarkId);
-  
-        // Redirect to dashboard or favorites page
-        return h.redirect("/dashboard");
-      } catch (error) {
-        console.error('Failed to add placemark to favorites:', error);
-        return h.response('Failed to add placemark to favorites').code(500);
-      }
-    }
-  },
   showFavorites: {
-    handler: async function (request, h) {
+    handler: async function(request, h) {
       try {
-        const loggedInUser = request.auth.credentials;
-        
-        // Fetch user's favorite placemarks from the database
-        const favoritePlacemarks = await db.userStore.getFavoritePlacemarks(loggedInUser._id);
-  
-        // Render the favorite view page with the list of favorite placemarks
-        return h.view("favorite-view", { favoritePlacemarks });
+        // Logic to retrieve the user's favorite placemarks from the database
+        // Once retrieved, render the favorites view with the data
+        const favorites = []; // Replace this with logic to retrieve favorites
+        return h.view("favorite-view", { favorites }); // Render favorites view with favorites data
       } catch (error) {
-        console.error('Failed to retrieve favorite placemarks:', error);
-        return h.view("error-view", { error: "An error occurred while retrieving favorite placemarks" }).code(500);
+        console.error("Error retrieving favorites:", error);
+        // Handle the error appropriately
+        return h.view("error-view", { error: "Failed to retrieve favorites" }).code(500);
       }
     }
   }
-};
 
+
+};

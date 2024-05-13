@@ -3,6 +3,7 @@
 import { v4 } from "uuid";
 import { db } from "./store-utils.js";
 import { placemarkJsonStore } from "./placemark-json-store.js";
+let favoritePlacemarks = [];
 
 // export userJsonStore object
 export const userJsonStore = {
@@ -70,4 +71,32 @@ export const userJsonStore = {
     db.data.users = [];
     await db.write();
   },
+// user-store.js
+
+// Function to add a favorite placemark for a user
+async addFavoritePlacemark(userId, placemarkId) {
+  // Get the placemark details by its ID
+  const placemark = await placemarkJsonStore.getPlacemarkById(placemarkId);
+  if (!placemark) {
+    throw new Error('Placemark not found');
+  }
+
+  // Add the placemarkId and title to the user's favoritePlacemarks
+  favoritePlacemarks.push({ userId, placemarkId, title: placemark.title });
+},
+
+// Function to get all favorite placemarks for a user
+async getFavoritePlacemarks(userId) {
+  // Filter favoritePlacemarks to get only those belonging to the user
+  return favoritePlacemarks.filter((favorite) => favorite.userId === userId);
+},
+
+// Function to remove a favorite placemark for a user
+async removeFavoritePlacemark(userId, placemarkId) {
+  // Filter favoritePlacemarks to remove the specified placemarkId
+  favoritePlacemarks = favoritePlacemarks.filter(
+    (favorite) => !(favorite.userId === userId && favorite.placemarkId === placemarkId)
+  );
+}
+
 };

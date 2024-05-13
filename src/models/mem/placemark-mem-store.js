@@ -45,23 +45,28 @@ export const placemarkMemStore = {
       placemarks[index].category = updatedPlacemark.category;
     }
   } ,
-
-  async addFavorite(userId, placemarkId) {
-    if (!favoritePlacemarks[userId]) {
-      favoritePlacemarks[userId] = [];
-    }
-    if (!favoritePlacemarks[userId].includes(placemarkId)) {
-      favoritePlacemarks[userId].push(placemarkId);
-    }
-  },
-
-  async removeFavorite(userId, placemarkId) {
-    if (favoritePlacemarks[userId]) {
-      favoritePlacemarks[userId] = favoritePlacemarks[userId].filter((id) => id !== placemarkId);
+  async addFavoritePlacemark(userId, placemarkId) {
+    const user = await this.getUserById(userId);
+    if (user) {
+      if (!user.favoritePlacemarks) {
+        user.favoritePlacemarks = [];
+      }
+      user.favoritePlacemarks.push(placemarkId);
+      await this.updateUser(userId, user);
     }
   },
-
+  
   async getFavoritePlacemarks(userId) {
-    return favoritePlacemarks[userId] || [];
+    const user = await this.getUserById(userId);
+    if (user && user.favoritePlacemarks) {
+      const favoritePlacemarks = await Promise.all(user.favoritePlacemarks.map(async (placemarkId) => {
+        return await this.getPlacemarkById(placemarkId);
+      }));
+      return favoritePlacemarks.filter((placemark) => placemark !== null);
+    }
+    return [];
   },
+  
+
+  
 };

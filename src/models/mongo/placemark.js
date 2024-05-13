@@ -14,6 +14,11 @@ const placemarkSchema = new Schema({
 
   category: String,
   img: String,
+
+  favoritedBy: [{
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  }],
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User",

@@ -92,22 +92,27 @@ export const placemarkMongoStore = {
     return updatedPlacemarkObject;
 },
 
-
-  async addFavoritePlacemark(userId, placemarkId) {
-    const placemark = await Placemark.findOne({ _id: placemarkId });
-    if (!placemark) {
-      throw new Error("Placemark not found");
+async addFavoritePlacemark(userId, placemarkId) {
+  const user = await this.getUserById(userId);
+  if (user) {
+    if (!user.favoritePlacemarks) {
+      user.favoritePlacemarks = [];
     }
-    placemark.isFavorite = true;
-    await placemark.save();
-    return placemark;
-  },
+    user.favoritePlacemarks.push(placemarkId);
+    await this.updateUser(userId, user);
+  }
+},
 
-  // Add a function to get favorite placemarks by user ID
-  async getFavoritePlacemarksByUserId(userId) {
-    const favoritePlacemarks = await Placemark.find({ userId, isFavorite: true }).lean();
-    return favoritePlacemarks;
-  },
+async getFavoritePlacemarks(userId) {
+  const user = await this.getUserById(userId);
+  if (user && user.favoritePlacemarks) {
+    const favoritePlacemarks = await Promise.all(user.favoritePlacemarks.map(async (placemarkId) => {
+      return await this.getPlacemarkById(placemarkId);
+    }));
+    return favoritePlacemarks.filter((placemark) => placemark !== null);
+  }
+  return [];
+},
 
 
 };

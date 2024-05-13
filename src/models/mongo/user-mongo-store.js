@@ -1,5 +1,6 @@
 import { User } from "./user.js";
 import { placemarkMongoStore } from "./placemark-mongo-store.js";
+let favoritePlacemarks = [];
 
 // export userMongoStore object
 export const userMongoStore = {
@@ -67,4 +68,38 @@ export const userMongoStore = {
     return updatedUserObject;
   },
 
+// user-store.js
+
+async addFavoritePlacemark(userId, placemarkId) {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  user.favoritePlacemarks.push(placemarkId);
+  await user.save();
+},
+
+// Function to get all favorite placemarks for a user
+async getFavoritePlacemarks(userId) {
+  const user = await User.findById(userId).populate("favoritePlacemarks");
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user.favoritePlacemarks;
+},
+
+// Function to remove a favorite placemark for a user
+async removeFavoritePlacemark(userId, placemarkId) {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  user.favoritePlacemarks = user.favoritePlacemarks.filter(
+    (favId) => favId.toString() !== placemarkId
+  );
+  await user.save();
+},
 };
