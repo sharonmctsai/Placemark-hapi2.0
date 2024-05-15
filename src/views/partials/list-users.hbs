@@ -1,37 +1,38 @@
 <div class="columns is-multiline">
   {{#if users}}
   <div class="column is-full">
-    <div class="columns is-multiline">
-      {{#each users}}
-      <div class="column is-one-third">
-        <div class="card">
-          <header class="card-header has-background-warning"> 
-            <p class="card-header-title is-centered">Admin</p>
-          </header>
-            <div class="content">
-              <p><strong>First Name:</strong> {{firstName}}</p>
-              <p><strong>Last Name:</strong> {{lastName}}</p>
-              <p><strong>Email:</strong> {{email}}</p>
-              <p><strong>Placemarks in charge:</strong> {{placemarkCount}}</p>
-            </div>
-          </div>
-          <footer class="card-footer">
-    <a href="/admin/deleteuser/{{_id}}" title="Delete User" class="card-footer-item">
-        <i class="fas fa-trash has-text-danger"></i>
-    </a>
-</footer>
-
-        </div>
-      </div>
-      {{/each}}
-    </div>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Placemarks in charge</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <td>{{firstName}}</td>
+          <td>{{lastName}}</td>
+          <td>{{email}}</td>
+          <td>{{placemarkCount}}</td>
+          <td>
+            <a href="/admin/deleteuser/{{_id}}" title="Delete User">
+              <i class="fas fa-trash has-text-danger"></i>
+            </a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
-
   {{else}}
   <div class="column is-full">
     <div class="box">
       <p>No users found</p>
     </div>
+  </div>
   {{/if}}
 </div>
-

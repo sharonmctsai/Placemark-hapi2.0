@@ -1,96 +1,38 @@
 {{> admin-menu active="analytics"}}
 
-<div class="columns is-multiline">
-	<div class="column is-one-third">
-		<div class="column">
-			<div class="card-content has-text-centered">
-				<p class="is-size-1 has-text-warning">
-				</p>
-			</div>
-			
-				<p class="is-size-5">
-					Total Users</p>
-			
-				<p class="is-size-3 has-text-warning ">
-					{{users}}
-				</p>
-		</div>
-		
-	</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Total Users</th>
+            <th>Most Active User</th>
+            <th>Most Popular Category</th>
+            <th>Total Placemarks</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{users}}</td>
+            <td>{{mostActiveUser}}</td>
+            <td>{{mostPopularCategory}}</td>
+            <td>{{placemarks}}</td>
+        </tr>
+    </tbody>
+</table>
 
-
-	<div class="column is-one-third">
-		<div class="column">
-			<div class="card-content has-text-centered">
-				<p class="is-size-1 has-text-warning">
-				</p>
-			</div>
-				<p class="is-size-5">
-					Most Active User
-				</p>
-				<p class="is-size-3 has-text-warning">
-					{{mostActiveUser}}
-				</p>
-		</div>
-	</div>
-		
-	<div class="column is-one-third">
-		<div class="column">
-			<div class="card-content has-text-centered">
-				<p class="is-size-1 has-text-warning">
-				</p>
-			</div>
-				<p class="is-size-5">
-					Most Popular Category
-				</p>
-				<p class="is-size-3 has-text-warning">
-					{{mostPopularCategory}}
-				</p>
-		</div>
-	</div>
-	</div>
-	<div class="column is-one-third">
-		<div class="column">
-			<div class="card-content has-text-centered">
-				<p class="is-size-1 has-text-warning">
-				</p>
-			</div>
-				<p class="is-size-5">
-					Total Placemarks
-				</p>
-				<p class="is-size-3 has-text-warning">
-					{{placemarks}}
-				</p>
-		</div>
-	</div>
-
-
-
-	<div class="column is-one-third">
-		<div class="column">
-			<div class="card-content has-text-centered">
-				<p class="is-size-1 has-text-warning">
-				</p>
-			</div>
-				<div class="is-size-5">
-					Placemarks per Category
-				</div>
-					<div class="dropdown is-hoverable"> 
-						<div class="dropdown-trigger">
-							<button class="button is-warning" aria-haspopup="true" aria-controls="dropdown-menu">
-								<span>Categories</span>
-								
-							</button>
-						</div>
-						<div class="dropdown-menu" id="dropdown-menu" role="menu">
-							<div class="dropdown-content">
-								{{#each placemarksPerCategory}}
-								<a href="#" class="dropdown-item">{{category}}: {{count}}</a>
-								{{/each}}
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
+<h2>Placemarks per Category</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each placemarksPerCategory}}
+        <tr>
+            <td>{{category}}</td>
+            <td>{{count}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
